@@ -296,7 +296,7 @@ d={'a':1,
  
  
  def spaces_types(
-@@ -51,68 +72,66 @@
+@@ -51,68 +72,65 @@
      d: dict = {},
      e: bool = True,
      f: int = -1,
@@ -332,8 +332,7 @@ d={'a':1,
 +            "some big and",
 +            "complex subscript",
 +            # fmt: on
-+            goes
-+            + here,
++            goes + here,
 +            andhere,
 +        )
      ]
@@ -385,7 +384,7 @@ d={'a':1,
      # fmt: on
  
  
-@@ -133,10 +152,10 @@
+@@ -133,10 +151,10 @@
      """Another known limitation."""
      # fmt: on
      # fmt: off
@@ -400,7 +399,7 @@ d={'a':1,
      # fmt: on
      # fmt: off
      # ...but comments still get reformatted even though they should not be
-@@ -145,43 +164,11 @@
+@@ -145,43 +163,11 @@
  
  def long_lines():
      if True:
@@ -412,11 +411,13 @@ d={'a':1,
 -                implicit_default=True,
 -            )
 -        )
--        # fmt: off
++        NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
+         # fmt: off
 -        a = (
 -            unnecessary_bracket()
 -        )
--        # fmt: on
++        a = NOT_IMPLEMENTED_call()
+         # fmt: on
 -    _type_comment_re = re.compile(
 -        r"""
 -        ^
@@ -437,17 +438,15 @@ d={'a':1,
 -        )
 -        $
 -        """,
-+        NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
-         # fmt: off
+-        # fmt: off
 -        re.MULTILINE|re.VERBOSE
-+        a = NOT_IMPLEMENTED_call()
-         # fmt: on
+-        # fmt: on
 -    )
 +    _type_comment_re = NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
  
  
  def single_literal_yapf_disable():
-@@ -189,36 +176,9 @@
+@@ -189,36 +175,9 @@
      BAZ = {(1, 2, 3, 4), (5, 6, 7, 8), (9, 10, 11, 12)}  # yapf: disable
  
  
@@ -591,8 +590,7 @@ def subscriptlist():
             "some big and",
             "complex subscript",
             # fmt: on
-            goes
-            + here,
+            goes + here,
             andhere,
         )
     ]

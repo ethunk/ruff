@@ -152,7 +152,7 @@ aaaaaaaaaaaaa, bbbbbbbbb = map(list, map(itertools.chain.from_iterable, zip(*ite
  
      tup = (
          another_element,
-@@ -86,33 +87,20 @@
+@@ -86,33 +87,17 @@
  def func(
      a=some_list[0],  # type: int
  ):  # type: () -> int
@@ -183,10 +183,7 @@ aaaaaaaaaaaaa, bbbbbbbbb = map(list, map(itertools.chain.from_iterable, zip(*ite
  
 -AAAAAAAAAAAAA = [AAAAAAAAAAAAA] + SHARED_AAAAAAAAAAAAA + USER_AAAAAAAAAAAAA + AAAAAAAAAAAAA  # type: ignore
 +AAAAAAAAAAAAA = (
-+    [AAAAAAAAAAAAA]
-+    + SHARED_AAAAAAAAAAAAA
-+    + USER_AAAAAAAAAAAAA
-+    + AAAAAAAAAAAAA
++    [AAAAAAAAAAAAA] + SHARED_AAAAAAAAAAAAA + USER_AAAAAAAAAAAAA + AAAAAAAAAAAAA
 +)  # type: ignore
  
 -call_to_some_function_asdf(
@@ -299,10 +296,7 @@ def func(
 result = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  # aaa
 
 AAAAAAAAAAAAA = (
-    [AAAAAAAAAAAAA]
-    + SHARED_AAAAAAAAAAAAA
-    + USER_AAAAAAAAAAAAA
-    + AAAAAAAAAAAAA
+    [AAAAAAAAAAAAA] + SHARED_AAAAAAAAAAAAA + USER_AAAAAAAAAAAAA + AAAAAAAAAAAAA
 )  # type: ignore
 
 NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)

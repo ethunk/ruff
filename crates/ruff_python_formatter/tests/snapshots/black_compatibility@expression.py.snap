@@ -274,11 +274,20 @@ last_call()
  Name
  None
  True
-@@ -30,98 +31,83 @@
+@@ -23,105 +24,90 @@
+ 1 >> v2
+ 1 % finished
+ 1 + v2 - v3 * 4 ^ 5**v6 / 7 // 8
+-((1 + v2) - (v3 * 4)) ^ (((5**v6) / 7) // 8)
++(1 + v2 - (v3 * 4)) ^ (5**v6 / 7 // 8)
+ not great
+ ~great
+ +value
  -1
  ~int and not v1 ^ 123 + v2 | True
- (~int) and (not ((v1 ^ (123 + v2)) | True))
+-(~int) and (not ((v1 ^ (123 + v2)) | True))
 -+(really ** -(confusing ** ~(operator**-precedence)))
++(~int) and (not (v1 ^ (123 + v2) | True))
 ++really ** -confusing ** ~operator**-precedence
  flags & ~select.EPOLLIN and waiters.write_task is not None
 -lambda arg: None
@@ -352,17 +361,17 @@ last_call()
 -    4,
 -    5,
 -]
+-[
+-    4,
+-    *a,
+-    5,
+-]
 +[1, 2, 3]
 +[*NOT_YET_IMPLEMENTED_ExprStarred]
 +[*NOT_YET_IMPLEMENTED_ExprStarred]
 +[*NOT_YET_IMPLEMENTED_ExprStarred, 4, 5]
 +[4, *NOT_YET_IMPLEMENTED_ExprStarred, 5]
  [
--    4,
--    *a,
--    5,
--]
--[
      this_is_a_very_long_variable_which_will_force_a_delimiter_split,
      element,
      another,
@@ -523,7 +532,7 @@ last_call()
      "priority": 1,
      "import_session_id": 1,
      **kwargs,
-@@ -198,35 +185,21 @@
+@@ -198,35 +185,19 @@
  b = (1,)
  c = 1
  d = (1,) + a + (2,)
@@ -543,13 +552,7 @@ last_call()
 -    )
 -    .order_by(models.Customer.id.asc())
 -    .all()
-+e = NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
-+f = 1, *NOT_YET_IMPLEMENTED_ExprStarred
-+g = 1, *NOT_YET_IMPLEMENTED_ExprStarred
-+what_is_up_with_those_new_coord_names = (
-+    (coord_names + NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg))
-+    + NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
- )
+-)
 -result = (
 -    session.query(models.Customer.id)
 -    .filter(
@@ -559,12 +562,18 @@ last_call()
 -        models.Customer.id.asc(),
 -    )
 -    .all()
-+what_is_up_with_those_new_coord_names = (
-+    (coord_names | NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg))
-+    - NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
- )
+-)
 -Ø = set()
 -authors.łukasz.say_thanks()
++e = NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
++f = 1, *NOT_YET_IMPLEMENTED_ExprStarred
++g = 1, *NOT_YET_IMPLEMENTED_ExprStarred
++what_is_up_with_those_new_coord_names = (
++    coord_names + NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
++) + NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
++what_is_up_with_those_new_coord_names = (
++    coord_names | NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
++) - NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
 +result = NOT_IMPLEMENTED_call()
 +result = NOT_IMPLEMENTED_call()
 +Ø = NOT_IMPLEMENTED_call()
@@ -572,7 +581,7 @@ last_call()
  mapping = {
      A: 0.25 * (10.0 / 12),
      B: 0.1 * (10.0 / 12),
-@@ -236,31 +209,29 @@
+@@ -236,31 +207,29 @@
  
  
  def gen():
@@ -617,7 +626,7 @@ last_call()
      ...
  for j in 1 + (2 + 3):
      ...
-@@ -272,7 +243,7 @@
+@@ -272,7 +241,7 @@
      addr_proto,
      addr_canonname,
      addr_sockaddr,
@@ -626,7 +635,7 @@ last_call()
      pass
  a = (
      aaaa.bbbb.cccc.dddd.eeee.ffff.gggg.hhhh.iiii.jjjj.kkkk.llll.mmmm.nnnn.oooo.pppp
-@@ -291,9 +262,9 @@
+@@ -291,9 +260,9 @@
      is not qqqq.rrrr.ssss.tttt.uuuu.vvvv.xxxx.yyyy.zzzz
  )
  if (
@@ -639,7 +648,7 @@ last_call()
  ):
      return True
  if (
-@@ -327,13 +298,18 @@
+@@ -327,13 +296,18 @@
  ):
      return True
  if (
@@ -661,7 +670,7 @@ last_call()
      ^ aaaaaaaa.i << aaaaaaaa.k >> aaaaaaaa.l**aaaaaaaa.m // aaaaaaaa.n
  ):
      return True
-@@ -341,7 +317,8 @@
+@@ -341,7 +315,8 @@
      ~aaaaaaaaaaaaaaaa.a
      + aaaaaaaaaaaaaaaa.b
      - aaaaaaaaaaaaaaaa.c * aaaaaaaaaaaaaaaa.d @ aaaaaaaaaaaaaaaa.e
@@ -671,7 +680,7 @@ last_call()
      ^ aaaaaaaaaaaaaaaa.i
      << aaaaaaaaaaaaaaaa.k
      >> aaaaaaaaaaaaaaaa.l**aaaaaaaaaaaaaaaa.m // aaaaaaaaaaaaaaaa.n
-@@ -366,5 +343,5 @@
+@@ -366,5 +341,5 @@
      ^ bbbb.a & aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
      ^ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
  )
@@ -709,13 +718,13 @@ v1 << 2
 1 >> v2
 1 % finished
 1 + v2 - v3 * 4 ^ 5**v6 / 7 // 8
-((1 + v2) - (v3 * 4)) ^ (((5**v6) / 7) // 8)
+(1 + v2 - (v3 * 4)) ^ (5**v6 / 7 // 8)
 not great
 ~great
 +value
 -1
 ~int and not v1 ^ 123 + v2 | True
-(~int) and (not ((v1 ^ (123 + v2)) | True))
+(~int) and (not (v1 ^ (123 + v2) | True))
 +really ** -confusing ** ~operator**-precedence
 flags & ~select.EPOLLIN and waiters.write_task is not None
 lambda x: True
@@ -874,13 +883,11 @@ e = NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
 f = 1, *NOT_YET_IMPLEMENTED_ExprStarred
 g = 1, *NOT_YET_IMPLEMENTED_ExprStarred
 what_is_up_with_those_new_coord_names = (
-    (coord_names + NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg))
-    + NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
-)
+    coord_names + NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
+) + NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
 what_is_up_with_those_new_coord_names = (
-    (coord_names | NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg))
-    - NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
-)
+    coord_names | NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
+) - NOT_IMPLEMENTED_call(NOT_IMPLEMENTED_arg)
 result = NOT_IMPLEMENTED_call()
 result = NOT_IMPLEMENTED_call()
 Ø = NOT_IMPLEMENTED_call()
