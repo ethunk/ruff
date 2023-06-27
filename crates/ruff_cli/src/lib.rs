@@ -12,7 +12,7 @@ use notify::{recommended_watcher, RecursiveMode, Watcher};
 use ruff::logging::{set_up_logging, LogLevel};
 use ruff::settings::types::SerializationFormat;
 use ruff::settings::{flags, CliSettings};
-use ruff::{fs, warn_user_once};
+use ruff::{fs, warn_user, warn_user_once};
 use ruff_python_formatter::{format_module, PyFormatOptions};
 
 use crate::args::{Args, CheckArgs, Command};
@@ -329,10 +329,22 @@ pub fn check(args: CheckArgs, log_level: LogLevel) -> Result<ExitStatus> {
             }
         }
     } else {
-        let is_stdin = cli.files == vec![PathBuf::from("-")];
+        // If the user provided the dash file (`-`), or specified a `--stdin-filename`,
+        // read input from standard input.
+        let is_stdin =
+            cli.stdin_filename.is_some() || cli.files.iter().any(|file| file == Path::new("-"));
 
         // Generate lint violations.
         let diagnostics = if is_stdin {
+            for file in cli.files {
+                if file != Path::new("-") {
+                    warn_user!(
+                        "Ignoring file `{}` in favor of standard input.",
+                        file.display()
+                    );
+                }
+            }
+
             commands::run_stdin::run_stdin(
                 cli.stdin_filename.map(fs::normalize_path).as_deref(),
                 &pyproject_config,
