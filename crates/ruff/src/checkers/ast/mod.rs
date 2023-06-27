@@ -623,6 +623,10 @@ where
                         );
                     }
                 }
+                if self.enabled(Rule::UnreachableCode) {
+                    self.diagnostics
+                        .extend(ruff::rules::unreachable::in_function(name, body));
+                }
             }
             Stmt::Return(_) => {
                 if self.enabled(Rule::ReturnOutsideFunction) {
